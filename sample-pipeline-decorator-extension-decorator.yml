@@ -1,0 +1,12 @@
+steps:
+- ${{ if ne(variables['skipDecoratorExecution'], 'true') }}:
+    - task: CredScan@2
+      inputs:
+        toolMajorVersion: 'V1'
+    - task: ArchiveFiles@2
+      inputs:
+        rootFolderOrFile: '$(Build.BinariesDirectory)'
+        includeRootFolder: true
+        archiveType: 'zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+        replaceExistingArchive: true

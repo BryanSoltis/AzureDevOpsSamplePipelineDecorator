@@ -1,0 +1,54 @@
+{
+    "manifestVersion": 1,
+    "id": "sample-pipeline-decorator-extension",
+    "publisher": "BryanSoltis",
+    "version": "1.0.0",
+    "name": "Sample Pipeline Decorator Extension",
+    "description": "This is a sample pipeline decorator extension.",
+    "public": false,
+    "categories": ["Azure Repos"],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "sample-pipeline-decorator-extension-hub",
+            "type": "ms.vss-web.hub",
+            "targets": [
+                "ms.vss-code-web.code-hub-group"
+            ],
+            "properties": {
+                "name": "Sample Pipeline Decorator Extensionn Hub",
+                "uri": "sample-pipeline-decorator-extension-hub.html"
+            }
+        },
+       {
+           "id": "sample-pipeline-decorator-extension-required-task",
+           "type": "ms.azure-pipelines.pipeline-decorator",
+           "targets": [
+               "ms.azure-pipelines-agent-job.post-job-tasks"
+           ],
+           "properties": {
+               "template": "sample-pipeline-decorator-extension-decorator.yml"
+           }
+       }
+   ],
+    "files": [
+        {
+            "path": "sample-pipeline-decorator-extension-hub.html",
+            "addressable": true
+        },
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "lib"
+        },
+        {
+           "path": "sample-pipeline-decorator-extension-decorator.yml",
+           "addressable": true,
+           "contentType": "text/plain"
+       }
+    ]
+}
